@@ -1,0 +1,39 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/studentmanage
+    username: StudentManage
+    password: 123456
+    type: com.alibaba.druid.pool.DruidDataSource
+
+
+  cache:
+    type: redis
+    redis:
+      #      use-key-prefix: true
+      #      cache-null-values: true
+      #      key-prefix: aa
+      time-to-live: 60s
+
+
+  redis:
+    host: localhost
+    port: 6379
+    password: Zshxy1013
+    connect-timeout: 5000ms
+  #    开启AOP 等于@EnableAspectJAutoProxy
+  aop:
+    auto: true
+
+img:
+  studentpath: /Users/huoxiyi/IdeaProjects/StudentManageBackend/src/main/resources/static/profile/student/
+  teacherpath: /Users/huoxiyi/IdeaProjects/StudentManageBackend/src/main/resources/static/profile/teacher/
+  adminpath: /Users/huoxiyi/IdeaProjects/StudentManageBackend/src/main/resources/static/profile/admin/
+
+server:
+  port: 80
+
+mybatis:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
