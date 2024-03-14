@@ -29,6 +29,7 @@ public class AdminManageController {
 
     @PostMapping("/admin/uploadProfile")
     public Result UploadProfile(MultipartFile file) throws IOException {
+
         String originalFilename = file.getOriginalFilename();
         String suffix = originalFilename.substring(originalFilename.lastIndexOf("."));
         String name = UUID.randomUUID().toString().substring(1, 8);
@@ -38,7 +39,22 @@ public class AdminManageController {
             file1.mkdirs();
         }
         file.transferTo(new File(path + name + suffix));
+
         return new Result(name + suffix, Code.CREATED_OK);
+//
+//        String originalFilename = file.getOriginalFilename(); // 获取原始文件名
+//        String suffix = originalFilename.substring(originalFilename.lastIndexOf(".")); // 提取文件后缀
+//        String name = UUID.randomUUID().toString().substring(0, 8); // 生成随机文件名，注意substring起始索引改为0
+//
+//        Path resolve = Paths.get(path, name + suffix);// 构建保存文件的完整路径
+//        if (!Files.exists(resolve.getParent())) {
+//            Files.createDirectories(resolve.getParent()); // 如果目录不存在，则创建
+//        }
+//
+//        file.transferTo(resolve); // 保存文件
+//
+//        return new Result(name + suffix, Code.CREATED_OK); // 返回结果，这里假设Result构造器接受文件名和状态码
+
     }
 
     @PostMapping("/admin")
